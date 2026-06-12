@@ -1,0 +1,41 @@
+name: tagging_engine
+description: >-
+  MoneyChat Tagging plugin — tag catalog, manual tagging, propagation, local
+  inference pipeline, and optional remote-AI suggestions. Usable by any
+  MoneyChat-compatible Flutter app.
+version: 0.1.0
+publish_to: none
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+  flutter: '>=3.22.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  objectbox: ^5.2.0
+  crypto: ^3.0.7
+  collection: ^1.19.1
+  shared_preferences: ^2.5.4
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  objectbox_generator: ^5.2.0
+  build_runner: ^2.4.0
+
+# ─── Integration notes ────────────────────────────────────────────────────────
+#
+# 1. Add this package as a path dependency in your app's pubspec.yaml:
+#
+#      tagging_engine:
+#        path: ../tagging_engine
+#
+# 2. Run `dart run build_runner build` in your app. The ObjectBox generator
+#    will scan tagging_engine's lib/ and include the four @Entity classes in
+#    your app's generated Store.
+#
+# 3. Construct TaggingPlugin in your composition root, passing box factories
+#    for each entity and a TaggingConfig. See tagging_plugin.dart.
+#
+# 4. Register the plugin before any capability that depends on 'tagging.v1'.
